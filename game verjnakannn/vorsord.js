@@ -26,12 +26,16 @@ module.exports = class Vorsord extends LivingCreature {
        
         return super.chooseCell(char);
     }
-
+    random(ch){
+        let found = this.chooseCell(ch);
+        let result = Math.floor(Math.random()*found.length)
+        return found[result];
+        }
     mul() {
-        this.multiply++;
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
-
+        // this.multiply++;
+        // var emptyCells = this.chooseCell(0);
+        // var newCell = random(emptyCells);
+          var newCell = this.random(0)
         
         if (newCell && this.multiply >= 15) {
             var newX = newCell[0];

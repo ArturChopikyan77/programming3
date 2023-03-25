@@ -1,8 +1,8 @@
 let LivingCreature = require("./LivingCreature")
 
-module.exports = class Bomb extends LivingCreature{
+module.exports = class Bomb extends LivingCreature {
     constructor(x, y) {
-        super(x,y)
+        super(x, y)
         this.time = 5;
         this.radius = 1
         this.directions = [
@@ -63,9 +63,16 @@ module.exports = class Bomb extends LivingCreature{
 
         return found;
     }
+
+    random(ch) {
+        let found = this.chooseCell(ch);
+        let result = Math.floor(Math.random() * found.length)
+        return found[result];
+    }
     mul() {
-        let found = this.chooseCell(0, 1, 2, 3, 4);
-        let exact = random(found)
+        // let found = this.chooseCell(0, 1, 2, 3, 4);
+        // let exact = random(found)
+        let newCell = this.random(0)
 
         if (exact) {
             this.radius++;
