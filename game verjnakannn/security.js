@@ -21,11 +21,17 @@ module.exports = class Security extends LivingCreature {
         return super.chooseCell(char);
     }
 
-    mul() {
-        this.multiply++;
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+    random(ch){
+        let found = this.chooseCell(ch);
+        let result = Math.floor(Math.random()*found.length)
+        return found[result];
+        }
 
+    mul() {
+        // this.multiply++;
+        // var emptyCells = this.chooseCell(0);
+        // var newCell = random(emptyCells);
+        var newCell = this.random(0)
    
         if (newCell && this.multiply >=20) {
             var newX = newCell[0];
