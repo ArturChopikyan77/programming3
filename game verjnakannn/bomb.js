@@ -71,6 +71,8 @@ module.exports = class Bomb extends LivingCreature {
     }
     mul() {
         
+        
+
         // let found = this.chooseCell(0, 1, 2, 3, 4);
         // let exact = random(found)
         let newCell = this.random(0)
