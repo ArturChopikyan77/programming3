@@ -51,8 +51,8 @@ module.exports = class GrassEater extends LivingCreature {
 
 
     eat() {
-        let emptyCell = this.chooseCell(1);
-        let newCell = random(emptyCell)
+        // let emptyCell = this.chooseCell(1);
+        let newCell = this.random(1)
 
         if (newCell) {
             this.energy += 5;

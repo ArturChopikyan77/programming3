@@ -82,6 +82,7 @@
 // }
 
 // var matrix = matrixGenerator(30,50,25,5,15,10,5)
+const socket = io()
 var side = 25
 // //
 
@@ -93,9 +94,11 @@ var side = 25
 // var bombArr = []
 
 
-// function setup() {
-//     frameRate(15)
-//     createCanvas(matrix[0].length * side ,matrix.length * side)
+
+
+function setup() {
+    frameRate(10)
+    createCanvas(matrix[0].length * side ,matrix.length * side)
 
 //     for (let y = 0; y < matrix.length; y++) {
 //         for (let x = 0; x < matrix[y].length; x++) {
@@ -127,7 +130,7 @@ var side = 25
 
 
 
-function draw() {
+function changeColor(matrix) {
     
       for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
@@ -167,6 +170,7 @@ function draw() {
         }
           
       }
+      socket.on("send matrix",changeColor)
 
 //       for(let i in  grassArr){
 //             grassArr[i].mul()
@@ -215,4 +219,4 @@ function draw() {
 //     }
 //     }
 //         button.onclick = handleSubmit
-//     }
+    }

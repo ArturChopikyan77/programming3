@@ -3,7 +3,7 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-var messages = [];
+// var messages = [];
 app.use(express.static("."));
 app.get('/', function (req, res) {
     res.redirect('index.html');
@@ -13,15 +13,15 @@ server.listen(3000, function () {
     console.log("server okay")
 });
 
-io.on('connection', function (socket) {
-    for (var i in messages) {
-        socket.emit("display message", messages[i]);
-    }
-    socket.on("send message", function (data) {
-        messages.push(data);
-        io.sockets.emit("display message", data);
-    });
-});
+// io.on('connection', function (socket) {
+//     for (var i in messages) {
+//         socket.emit("display message", messages[i]);
+//     }
+//     socket.on("send message", function (data) {
+//         messages.push(data);
+//         io.sockets.emit("display message", data);
+//     });
+// });
 
 function matrixGenerator(matrixSize, grass, grassEater, predator, vorsord, security, bomb) {
     var matrix = []
@@ -102,7 +102,7 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, vorsord, secur
         matrix[y][x] = 6
 
     }
-
+io.emit("send matrix",matrix)
     return matrix
 }
 
@@ -187,6 +187,7 @@ function creatObj(){
     for(let i in bombArr){
         bombArr[i].mul()
     }
+    io.emit("send matrix",matrix)
     }
 
     setInterval(gameMove,1000)
