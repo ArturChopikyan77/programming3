@@ -82,8 +82,10 @@
 // }
 
 // var matrix = matrixGenerator(30,50,25,5,15,10,5)
+
 const socket = io()
 var side = 25
+
 // //
 
 // var grassArr = []
@@ -98,7 +100,7 @@ var side = 25
 
 function setup() {
     frameRate(10)
-    createCanvas(matrix[0].length * side ,matrix.length * side)
+    createCanvas(30 * side ,30 * side)
 
 //     for (let y = 0; y < matrix.length; y++) {
 //         for (let x = 0; x < matrix[y].length; x++) {

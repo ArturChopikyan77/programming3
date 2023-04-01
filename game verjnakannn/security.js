@@ -45,19 +45,43 @@ module.exports = class Security extends LivingCreature {
     }
 
     move() {
-        this.energy--
-        var emptyCell = this.chooseCell(0)
-        var newCell = random(emptyCell)
 
-        if (newCell && this.energy >= 0) {
+        let found = super.chooseCell(0);
+        let exact = found[[Math.floor(Math.random() * found.length)]];
+
+        if (exact) {
+            let x = exact[0];
+            let y = exact[1];
+            matrix[y][x] = matrix[this.y][this.x];
+            matrix[this.y][this.x] = 0;
+            this.x = x;
+            this.y = y;
+        }
+        else {
+            let found = super.chooseCell(1);
+            let exact = found[[Math.floor(Math.random() * found.length)]];
+            if (exact) {
+                let x = exact[0];
+                let y = exact[1];
+                matrix[y][x] = matrix[this.y][this.x];
+                matrix[this.y][this.x] = 0;
+                this.x = x;
+                this.y = y;
+            }
+        }
+        // this.energy--
+        // var emptyCell = this.chooseCell(0)
+        // var newCell = random(emptyCell)
+
+        // if (newCell && this.energy >= 0) {
          
-            var newX = newCell[0]
-            var newY = newCell[1]
-            matrix[newY][newX] = matrix[this.y][this.x]
-            matrix[this.y][this.x] = 0
-            this.x = newX
-            this.y = newY
-        }    
+        //     var newX = newCell[0]
+        //     var newY = newCell[1]
+        //     matrix[newY][newX] = matrix[this.y][this.x]
+        //     matrix[this.y][this.x] = 0
+        //     this.x = newX
+        //     this.y = newY
+        // }    
         
     }
 

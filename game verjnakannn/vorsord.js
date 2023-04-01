@@ -24,7 +24,7 @@ module.exports = class Vorsord extends LivingCreature {
     chooseCell(character) {
         this.getNewCoordinates()
 
-        return super.chooseCell(char);
+        return super.chooseCell(character);
     }
     random(ch) {
         let found = this.chooseCell(ch);
@@ -96,7 +96,7 @@ module.exports = class Vorsord extends LivingCreature {
 
     kill() {
         var emptyCells = this.chooseCell(3)
-        var newCell = random(emptyCells);
+        var newCell = random(3);
 
         if (newCell) {
             this.energy++

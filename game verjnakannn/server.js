@@ -190,4 +190,4 @@ function creatObj(){
     io.emit("send matrix",matrix)
     }
 
-    setInterval(gameMove,1000)
+    setInterval(gameMove,3000)

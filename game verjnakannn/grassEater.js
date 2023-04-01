@@ -86,26 +86,50 @@ module.exports = class GrassEater extends LivingCreature {
 
 
     move() {
-        let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
+        let found = super.chooseCell(0);
+        let exact = found[[Math.floor(Math.random() * found.length)]];
 
-        if (newCell) {
-            let newX = newCell[0];
-            let newY = newCell[1];
-
-            matrix[newY][newX] = 2;
+        if (exact) {
+            let x = exact[0];
+            let y = exact[1];
+            matrix[y][x] = 2;
             matrix[this.y][this.x] = 0;
+            this.x = x;
+            this.y = y;
+        }
+        else {
+            let found = super.chooseCell(1);
+            let exact = found[[Math.floor(Math.random() * found.length)]];
+            if (exact) {
+                let x = exact[0];
+                let y = exact[1];
+                matrix[y][x] = 2;
+                matrix[this.y][this.x] = 0;
+                this.x = x;
+                this.y = y;
+            }
+        }
+
+        // let emptyCell = this.chooseCell(0);
+        // let newCell = random(emptyCell)
+
+        // if (newCell) {
+        //     let newX = newCell[0];
+        //     let newY = newCell[1];
+
+        //     matrix[newY][newX] = 2;
+        //     matrix[this.y][this.x] = 0;
 
            
-            this.x = newX;
-            this.y = newY;
+        //     this.x = newX;
+        //     this.y = newY;
 
-            this.energy--
+        //     this.energy--
 
-            if (this.energy < 0) {
-                this.die()
-            }
-        } 
+        //     if (this.energy < 0) {
+        //         this.die()
+        //     }
+        // } 
     }
 
 
